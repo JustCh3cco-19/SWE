@@ -1,8 +1,8 @@
 CXX = g++
-INCLUDES = -I../../../common
+INCLUDES = -I../../../mocc
 CXXFLAGS = -std=c++17 -O2 -Wall -Wextra -pedantic $(INCLUDES)
 TARGET = main
-SRC = main.cpp
+SRC = main.cpp parser.cpp simulation.cpp io.cpp
 
 all: $(TARGET)
 

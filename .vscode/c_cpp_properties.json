@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${workspaceFolder}/.vscode/browse.vc.db",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_slam/include/**",
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_high_level_control/include/**",
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_hal_can/include/**",
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_messages/include/**",
+        "/opt/ros/humble/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ros2",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++17"
+    }
+  ],
+  "version": 4
+}

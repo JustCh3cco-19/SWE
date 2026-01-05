@@ -1,0 +1,25 @@
+{
+    "ROS2.distro": "humble",
+    "python.autoComplete.extraPaths": [
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_utils/lib/python3.10/site-packages",
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_system_profiler/lib/python3.10/site-packages",
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_slam/local/lib/python3.10/dist-packages",
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_path_planning/lib/python3.10/site-packages",
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_node_profiler/lib/python3.10/site-packages",
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_computer_vision/lib/python3.10/site-packages",
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_messages/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_utils/lib/python3.10/site-packages",
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_system_profiler/lib/python3.10/site-packages",
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_slam/local/lib/python3.10/dist-packages",
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_path_planning/lib/python3.10/site-packages",
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_node_profiler/lib/python3.10/site-packages",
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_computer_vision/lib/python3.10/site-packages",
+        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_messages/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}
