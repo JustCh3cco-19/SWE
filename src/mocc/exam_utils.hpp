@@ -28,6 +28,9 @@ inline std::string RootNameFromCwd() {
   return cwd_name;
 }
 
-inline urng_t MakeRng() { return urng_t(0); }
+inline urng_t MakeRng() {
+  std::random_device rd;
+  return urng_t(rd());
+}
 
 }  // namespace mocc_utils

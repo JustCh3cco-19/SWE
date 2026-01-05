@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+
+#include "exam_utils.hpp"
+#include "io.hpp"
+#include "parser.hpp"
+#include "simulation.hpp"
+
+int main() {
+  Parameters params;
+  std::string error;
+  if (!LoadParameters("parameters.txt", &params, &error)) {
+    std::cerr << error << "\n";
+    return 1;
+  }
+
+  auto rng = mocc_utils::MakeRng();
+  OptimizationResult result = OptimizeSupply(params, &rng);
+
+  if (!WriteResults(
+          "results.txt",
+          result.best_rate,
+          result.best_v,
+          result.best_q,
+          result.best_cost,
+          &error)) {
+    std::cerr << error << "\n";
+    return 1;
+  }
+  return 0;
+}
