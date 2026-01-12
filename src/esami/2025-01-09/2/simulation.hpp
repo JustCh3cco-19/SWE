@@ -1,11 +1,10 @@
 #pragma once
 
-#include "parser.hpp"
-
+#include "exam_utils.hpp"
 #include "mocc.hpp"
 
 double EstimateProbability(
-    const MdpData& data,
+    const mocc_utils::MdpData& data,
     double cost_limit,
     int simulations,
     urng_t* rng

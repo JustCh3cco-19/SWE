@@ -3,7 +3,7 @@
 #include <random>
 
 double EstimateProbability(
-    const MdpData& data,
+    const mocc_utils::MdpData& data,
     double cost_limit,
     int simulations,
     urng_t* rng

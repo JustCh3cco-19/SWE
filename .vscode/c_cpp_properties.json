@@ -6,10 +6,6 @@
         "limitSymbolsToIncludedHeaders": false
       },
       "includePath": [
-        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_slam/include/**",
-        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_high_level_control/include/**",
-        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_hal_can/include/**",
-        "/home/justch3cco/Desktop/SFC/as_workspace/install/as_messages/include/**",
         "/opt/ros/humble/include/**",
         "/usr/include/**"
       ],

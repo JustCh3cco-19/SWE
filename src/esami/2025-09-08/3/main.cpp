@@ -1,12 +1,13 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
 
 #include "exam_utils.hpp"
-#include "io.hpp"
 #include "parser.hpp"
 #include "simulation.hpp"
 
 int main() {
+  const mocc_utils::UserInfo user = mocc_utils::GetUserInfo();
   Parameters params;
   std::string error;
   if (!LoadParameters("parameters.txt", &params, &error)) {
@@ -17,7 +18,12 @@ int main() {
   auto rng = mocc_utils::MakeRng();
   double rate = EstimateMissRate(params, &rng);
 
-  if (!WriteResults("results.txt", rate, &error)) {
+  if (!mocc_utils::WriteResultsToFile("results.txt",
+                                      user.nome,
+                                      user.cognome,
+                                      user.matricola, [&](std::ostream& output) {
+    output << std::setprecision(8) << "R " << rate << "\n";
+  }, &error)) {
     std::cerr << error << "\n";
     return 1;
   }

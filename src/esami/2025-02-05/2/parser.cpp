@@ -5,20 +5,6 @@
 #include <string>
 #include <vector>
 
-namespace {
-
-bool ParseNumbers(const std::string& line, std::vector<double>* values) {
-  values->clear();
-  std::istringstream row(line);
-  double value = 0.0;
-  while (row >> value) {
-    values->push_back(value);
-  }
-  return !values->empty();
-}
-
-}  // namespace
-
 bool LoadParameters(const std::string& path, Parameters* out, std::string* error) {
   if (!out) {
     return false;
@@ -55,7 +41,7 @@ bool LoadParameters(const std::string& path, Parameters* out, std::string* error
       row >> expected_points;
     } else {
       std::vector<double> values;
-      if (!ParseNumbers(line, &values)) {
+      if (!mocc_utils::ParseNumbers(line, &values)) {
         continue;
       }
       if (values.size() == 4 && !area_set) {
@@ -65,7 +51,7 @@ bool LoadParameters(const std::string& path, Parameters* out, std::string* error
         out->y2 = values[3];
         area_set = true;
       } else if (values.size() == 2) {
-        out->points.push_back(Point{values[0], values[1]});
+        out->points.push_back(mocc_utils::Point{values[0], values[1]});
       }
     }
   }

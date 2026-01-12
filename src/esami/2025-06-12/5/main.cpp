@@ -1,12 +1,13 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
 
 #include "exam_utils.hpp"
-#include "io.hpp"
 #include "parser.hpp"
 #include "simulation.hpp"
 
 int main() {
+  const mocc_utils::UserInfo user = mocc_utils::GetUserInfo();
   Parameters params;
   std::string error;
   if (!LoadParameters("parameters.txt", &params, &error)) {
@@ -17,7 +18,13 @@ int main() {
   auto rng = mocc_utils::MakeRng();
   OptimizationResult result = OptimizeP(params, &rng);
 
-  if (!WriteResults("results.txt", result.best_p, result.best_q, &error)) {
+  if (!mocc_utils::WriteResultsToFile("results.txt",
+                                      user.nome,
+                                      user.cognome,
+                                      user.matricola, [&](std::ostream& output) {
+    output << std::setprecision(8) << "P " << result.best_p << "\n";
+    output << "Q " << result.best_q << "\n";
+  }, &error)) {
     std::cerr << error << "\n";
     return 1;
   }

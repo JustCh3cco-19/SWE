@@ -3,7 +3,7 @@
 #include <random>
 
 double EstimateExpectedCost(
-    const MdpData& data,
+    const mocc_utils::MdpData& data,
     int simulations,
     urng_t* rng
 ) {

@@ -1,64 +1,48 @@
 #include "parser.hpp"
 
-#include <fstream>
-#include <sstream>
-#include <string>
 #include <utility>
 
-bool LoadParameters(const std::string& path, MdpData* out, std::string* error) {
+#include "exam_utils.hpp"
+
+bool LoadParameters(const std::string& path, mocc_utils::MdpData* out, std::string* error) {
   if (!out) {
     return false;
   }
 
-  std::ifstream input(path);
-  if (!input) {
-    if (error) {
-      *error = "Cannot open parameters.txt";
-    }
-    return false;
-  }
-
-  std::string line;
   int num_states = -1;
-  if (std::getline(input, line)) {
-    std::istringstream header(line);
-    std::string tag;
-    header >> tag >> num_states;
-    if (tag != "N" || num_states <= 0) {
-      if (error) {
-        *error = "Invalid header in parameters.txt";
+  std::vector<std::vector<mocc_utils::Transition>> transitions;
+
+  bool success = mocc_utils::ParseTaggedFile(path,
+    [&num_states, &transitions](std::istringstream& row, const std::string&) {
+      std::string tag;
+      row >> tag;
+      if (tag == "N") {
+        row >> num_states;
+        if (num_states > 0) {
+          transitions.resize(num_states);
+        }
+      } else if (tag == "A") {
+        int from = -1;
+        int to = -1;
+        double prob = 0.0;
+        double cost = 0.0;
+        if (row >> from >> to >> prob >> cost) {
+          if (from >= 0 && from < num_states) {
+            transitions[from].push_back(mocc_utils::Transition{to, prob, cost});
+          }
+        }
       }
-      return false;
-    }
-  } else {
-    if (error) {
-      *error = "Empty parameters.txt";
-    }
+    }, error);
+
+  if (!success) {
     return false;
   }
 
-  std::vector<std::vector<Transition>> transitions(num_states);
-  while (std::getline(input, line)) {
-    if (line.empty()) {
-      continue;
+  if (num_states <= 0) {
+    if (error) {
+      *error = "Invalid or missing header in parameters.txt";
     }
-    std::istringstream row(line);
-    std::string tag;
-    row >> tag;
-    if (tag != "A") {
-      continue;
-    }
-    int from = -1;
-    int to = -1;
-    double prob = 0.0;
-    double cost = 0.0;
-    if (!(row >> from >> to >> prob >> cost)) {
-      continue;
-    }
-    if (from < 0 || from >= num_states) {
-      continue;
-    }
-    transitions[from].push_back(Transition{to, prob, cost});
+    return false;
   }
 
   out->num_states = num_states;

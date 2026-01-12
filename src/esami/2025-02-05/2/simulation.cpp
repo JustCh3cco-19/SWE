@@ -33,7 +33,7 @@ std::vector<double> SimulateCoverageOnce(const Parameters& params, urng_t* rng) 
 
   for (int t = 0; t < params.horizon; ++t) {
     for (std::size_t p = 0; p < params.points.size(); ++p) {
-      const Point& point = params.points[p];
+      const mocc_utils::Point& point = params.points[p];
       int count = 0;
       double min_x = point.x - 1.0;
       double max_x = point.x + 1.0;
