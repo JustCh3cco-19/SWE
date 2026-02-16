@@ -52,6 +52,7 @@ main
 .vscode/extensions.json
 .vscode/*.code-snippets
 .vscode/c_cpp_properties.json
+.vsco
 
 # Local History for Visual Studio Code
 .history/

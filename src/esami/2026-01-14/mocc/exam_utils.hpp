@@ -34,7 +34,7 @@ struct UserInfo {
 };
 
 inline UserInfo GetUserInfo() {
-  return {"Francesco", "Zompanti", "2012601"};
+  return {"Nome", "Cognome", "Matricola"};
 }
 
 inline bool IsAllDigits(const std::string& s) {
